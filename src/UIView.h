@@ -24,6 +24,7 @@ enum {
 @private
 	UIColor* _backgroundColor;
 	BOOL _needsLayout;
+	BOOL _opaque;
 }
 
 - (void)setNeedsDisplay;
@@ -32,6 +33,7 @@ enum {
 - (void)layoutIfNeeded;
 - (void)layoutSubviews;
 
+@property(nonatomic,assign,getter=isOpaque) BOOL opaque;
 @property(nonatomic,retain) UIColor* backgroundColor;
 @end
 

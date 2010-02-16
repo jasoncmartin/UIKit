@@ -193,16 +193,19 @@ CGColorRef CreatePatternColor(CGImageRef image);
 
 // Set the color: Sets the fill and stroke colors in the current drawing context. Should be implemented by subclassers.
 - (void)set {
-	// Not sure
+	[self setFill];
+	[self setStroke];
 }
 
 // Set the fill or stroke colors individually. These should be implemented by subclassers.
 - (void)setFill {
-	// Not sure
+	CGContextRef ref = UIGraphicsGetCurrentContext();
+	CGContextSetFillColorWithColor(ref, CGColor);
 }
 
 - (void)setStroke {
-	// Not sure
+	CGContextRef ref = UIGraphicsGetCurrentContext();
+	CGContextSetStrokeColorWithColor(ref, CGColor);
 }
 
 // Returns a color in the same color space as the receiver with the specified alpha component.

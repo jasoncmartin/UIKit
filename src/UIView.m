@@ -12,7 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation UIView
-@synthesize backgroundColor=_backgroundColor;
+@synthesize backgroundColor=_backgroundColor, opaque = _opaque;
 
 - (id)initWithFrame:(NSRect)frame {
 	if((self = [super initWithFrame:frame])) {
@@ -41,6 +41,12 @@
 - (void)displayIfNeeded {
 	[self layoutIfNeeded];
 	[super displayIfNeeded];
+}
+
+- (void)setOpaque:(BOOL)flag {
+	_opaque = flag;
+	
+	[self setNeedsDisplay];
 }
 
 - (void)setBackgroundColor:(UIColor *)aColor {

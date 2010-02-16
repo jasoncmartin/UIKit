@@ -41,12 +41,12 @@
 		_contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
 		
-		self.separatorColor = [UIColor blackColor];
+		self.separatorColor = [UIColor colorWithWhite:233/255 alpha:1.0];
 
-		_separatorView = [[UIView alloc] initWithFrame:NSMakeRect(0.0f, 10.0f, frame.size.width, 10.0f)];
+		_separatorView = [[UIView alloc] initWithFrame:NSMakeRect(0.0f, frame.size.height - 1.0f, frame.size.width, 1.0f)];
 		_separatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
-		//[_contentView addSubview:_separatorView];
+		[_contentView addSubview:_separatorView];
 		
 		[self addSubview:_contentView];
 		//[self addSubview:_separatorView];
@@ -79,6 +79,20 @@
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
 	self.highlighted = highlighted;
+	
+	if(_textLabel) {
+		[_textLabel setHighlighted:highlighted];
+	}
+	
+	[_contentView setOpaque:!highlighted];
+	
+	[self setNeedsDisplay];
+}
+
+- (void)drawRect:(NSRect)rect {
+	NSGradient *grad = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceRed:5/255 green:140/255 blue:245/255 alpha:1.0] endingColor:[NSColor colorWithDeviceRed:1/255 green:93/255 blue:230/255 alpha:1.0]];
+	[grad drawInRect:rect angle:90];
+	[grad release];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
@@ -101,6 +115,14 @@
 
 - (void)layoutSubviews {
 	[super layoutSubviews];
+}
+
+- (void)mouseDown:(NSEvent *)theEvent {
+	[self setHighlighted:YES];
+}
+
+- (void)mouseUp:(NSEvent *)theEvent {
+	[self setHighlighted:NO animated:YES];
 }
 
 - (void)dealloc {

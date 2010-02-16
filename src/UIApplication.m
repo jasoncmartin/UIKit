@@ -177,4 +177,12 @@ static UIApplication *sharedApplication = nil;
 	}
 }
 
+- (void)forwardInvocation:(NSInvocation *)anInvocation
+{
+    if ([[NSApplication sharedApplication] respondsToSelector:[anInvocation selector]])
+        [anInvocation invokeWithTarget:[NSApplication sharedApplication]];
+    else
+        [super forwardInvocation:anInvocation];
+}
+
 @end

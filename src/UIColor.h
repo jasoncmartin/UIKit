@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <UIKit/UIImage.h>
+#import <UIKit/UIGraphics.h>
 #import <UIKit/UIKitDefines.h>
 
 @interface UIColor : NSObject {
@@ -62,7 +63,7 @@
 // Access the underlying CGColor
 @property(nonatomic,readonly) CGColorRef CGColor;
 
-// Converst to NSColor
+// Converts to NSColor
 @property(nonatomic,readonly) NSColor* NSColor;
 
 @end

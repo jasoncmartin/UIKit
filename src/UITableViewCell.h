@@ -124,10 +124,10 @@ UIKIT_EXTERN_CLASS @interface UITableViewCell : UIView {
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
 // Content.  These properties provide direct access to the internal label and image views used by the table view cell.  These should be used instead of the content properties below.
-@property(nonatomic,readonly,retain) UIImageView  *imageView __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);   // default is nil.  image view will be created if necessary.
+@property(nonatomic,readonly,retain) UIImageView  *imageView;   // default is nil.  image view will be created if necessary.
 
-@property(nonatomic,readonly,retain) UILabel      *textLabel __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);   // default is nil.  label will be created if necessary.
-@property(nonatomic,readonly,retain) UILabel      *detailTextLabel __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);   // default is nil.  label will be created if necessary (and the current style supports a detail label).
+@property(nonatomic,readonly,retain) UILabel      *textLabel;   // default is nil.  label will be created if necessary.
+@property(nonatomic,readonly,retain) UILabel      *detailTextLabel;   // default is nil.  label will be created if necessary (and the current style supports a detail label).
 
 // If you want to customize cells by simply adding additional views, you should add them to the content view so they will be positioned appropriately as the cell transitions into and out of editing mode.
 @property(nonatomic,readonly,retain) UIView       *contentView;
@@ -173,22 +173,22 @@ UIKIT_EXTERN_CLASS @interface UITableViewCell : UIView {
 
 // Content properties.  These properties were deprecated in iPhone OS 3.0.  The textLabel and imageView properties above should be used instead.
 // For selected attributes, set the highlighted attributes on the textLabel and imageView.
-@property(nonatomic,copy)   NSString *text __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);                        // default is nil
-@property(nonatomic,retain) NSFont   *font __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);                        // default is nil (Use default font)
-// @property(nonatomic) UITextAlignment  textAlignment __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);               // default is UITextAlignmentLeft
-// @property(nonatomic) UILineBreakMode  lineBreakMode __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);               // default is UILineBreakModeTailTruncation
-@property(nonatomic,retain) UIColor  *textColor __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);                   // default is nil (text draws black)
-@property(nonatomic,retain) UIColor  *selectedTextColor __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);           // default is nil (text draws white)
+@property(nonatomic,copy)   NSString *text;                        // default is nil
+@property(nonatomic,retain) NSFont   *font;                        // default is nil (Use default font)
+// @property(nonatomic) UITextAlignment  textAlignment;               // default is UITextAlignmentLeft
+// @property(nonatomic) UILineBreakMode  lineBreakMode;               // default is UILineBreakModeTailTruncation
+@property(nonatomic,retain) UIColor  *textColor;                   // default is nil (text draws black)
+@property(nonatomic,retain) UIColor  *selectedTextColor;           // default is nil (text draws white)
 
-@property(nonatomic,retain) UIImage  *image __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);                       // default is nil. appears on left next to title.
-@property(nonatomic,retain) UIImage  *selectedImage __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);               // default is nil
+@property(nonatomic,retain) UIImage  *image;                       // default is nil. appears on left next to title.
+@property(nonatomic,retain) UIImage  *selectedImage;               // default is nil
 
 // Use the new editingAccessoryType and editingAccessoryView instead
-@property(nonatomic) BOOL             hidesAccessoryWhenEditing __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);   // default is YES
+@property(nonatomic) BOOL             hidesAccessoryWhenEditing;   // default is YES
 
 // Use the table view data source method -tableView:commitEditingStyle:forRowAtIndexPath: or the table view delegate method -tableView:accessoryButtonTappedForRowWithIndexPath: instead
-@property(nonatomic,assign) id        target __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);                      // target for insert/delete/accessory clicks. default is nil (i.e. go up responder chain). weak reference
-@property(nonatomic) SEL              editAction __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);                  // action to call on insert/delete call. set by UITableView
-@property(nonatomic) SEL              accessoryAction __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_NA,__MAC_NA,__IPHONE_2_0,__IPHONE_3_0);             // action to call on accessory view clicked. set by UITableView
+@property(nonatomic,assign) id        target;                      // target for insert/delete/accessory clicks. default is nil (i.e. go up responder chain). weak reference
+@property(nonatomic) SEL              editAction;                  // action to call on insert/delete call. set by UITableView
+@property(nonatomic) SEL              accessoryAction;             // action to call on accessory view clicked. set by UITableView
 
 @end
